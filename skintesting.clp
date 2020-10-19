@@ -212,12 +212,6 @@
 	(printout t crlf "Diagnosed as Insect Bites" crlf))
         (assert (diagnosis (complete))))
 
-;===
-
-(defrule diagnosis
-        (diagnosis complete)
-        =>
-        (printout t crlf "Diagnosis is complete" crlf))
 
 	
 	
