@@ -112,19 +112,22 @@
 	(no_fever_diagnosis)
 	(skin_eruption yes)
 	=>
-	(printout t crlf "Diagnosed as Acne" crlf))
+	(printout t crlf "Diagnosed as Acne" crlf)
+	(halt))
 
 (defrule ichthyosis
 	(no_fever_diagnosis)
 	(fish_scale yes)
 	=>
-	(printout t crlf "Diagnosed as Ichthyosis" crlf))
+	(printout t crlf "Diagnosed as Ichthyosis" crlf)
+	(halt))
 	
 (defrule meningitis
 	(fever_diagnosis)
 	(stiff_neck yes)
 	=>
-	(printout t crlf "Diagnosed as Meningitis" crlf))
+	(printout t crlf "Diagnosed as Meningitis" crlf)
+	(halt))
 	
 (defrule sore_throat
 	(fever_diagnosis)
@@ -154,15 +157,15 @@
 	(infection_diagnosis)
 	(bite_red yes)
 	=>
-	(printout t crlf "Do you have sore throat and sneezing? (yes|no)" crlf)
+	(printout t crlf "Do you have red spot itchy (yes|no)" crlf)
 	(assert (red_spot_itchy (read))))
 
 (defrule wartz
 	(infection_diagnosis)
 	(black_spot yes)
 	=>
-	(printout t crlf "Diagnosed as Wartz? (yes|no)" crlf)
-
+	(printout t crlf "Diagnosed as Wartz" crlf)
+	(halt))
 
 ;====LEVEL 3/Result=================================================	
 	
@@ -171,47 +174,52 @@
 	(red_patches yes)
 	(pain_touch yes)
 	=>
-	(printout t crlf "Diagnosed as Hives" crlf))
+	(printout t crlf "Diagnosed as Hives" crlf)
+	(halt))
 
 (defrule psoriasis
 	(no_fever_diagnosis)
 	(red_patches yes)
 	(white_silvery yes)
 	=>
-	(printout t crlf "Diagnosed as Psoriasis" crlf))
+	(printout t crlf "Diagnosed as Psoriasis" crlf)
+	(halt))
 
 (defrule eczema
 	(no_fever_diagnosis)
 	(red_patches yes)
 	(small_blister yes)
 	=>
-	(printout t crlf "Diagnosed as Hives" crlf))
+	(printout t crlf "Diagnosed as Hives" crlf)
+	(halt))
 	
 (defrule measles
 	(fever_diagnosis)
 	(sore_throat yes)
 	=>
-	(printout t crlf "Diagnosed as Measles" crlf))
+	(printout t crlf "Diagnosed as Measles" crlf)
+	(halt))
 
 (defrule scarlet_fever
 	(fever_diagnosis)
 	(sudden_sore yes)
 	=>
-	(printout t crlf "Diagnosed as Scarlet Fever" crlf))
+	(printout t crlf "Diagnosed as Scarlet Fever" crlf)
+	(halt))
 
 (defrule cold_sore
 	(fever_diagnosis)
 	(blister_mouth yes)
 	=>
-	(printout t crlf "Diagnosed as Cold Sore" crlf))
+	(printout t crlf "Diagnosed as Cold Sore" crlf)
+	(halt))
 	
 (defrule insect_bites
 	(infection_diagnosis)
 	(red_spot_itchy yes)
 	=>
-	(printout t crlf "Diagnosed as Insect Bites" crlf))
-        (assert (diagnosis (complete))))
-
+	(printout t crlf "Diagnosed as Insect Bites" crlf)
+    (halt))
 
 	
 	
