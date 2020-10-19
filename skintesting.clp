@@ -221,12 +221,5 @@
 	(printout t crlf "Diagnosed as Insect Bites" crlf)
     (halt))
 
-;==================================================================
-
-(defrule diagnosis
-        (diagnosis complete)
-        =>
-        (printout t crlf "Diagnosis is complete" crlf))
-
 	
 	
