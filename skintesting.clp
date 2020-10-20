@@ -1,39 +1,37 @@
 (deffacts init (start))
 
 (defrule ask_fever
-	(start)
-	?ml <- (start)
-	=>
-	(printout t crlf "Are you fever? (yes|no)" crlf)
-	(bind ?fever (read))
-	(if(eq ?fever yes)
-	then(assert(fever_diagnosis))
-	else(if(eq ?fever no)
-		then(printout t crlf "Are you biten by bug? (yes|no)" crlf)
-	    (bind ?infection (read))
-		(if(eq ?infection yes)
-		then(assert(infection_diagnosis))
-	else
-		(assert(no_fever_diagnosis)))))
-		(retract ?ml))
+		(start)
+		?ml <- (start)
+        => 
+         (printout t crlf crlf 
+           "a. Skin rashes without fever" crlf
+           "b. Skin rashes with fever" crlf
+           "c. Skin infections " crlf 
+		   "Enter the choice then hit Enter" crlf
+		   "Choice: ")
+        (bind ?fever (read))
+        (if (eq ?fever a) then (assert (no_fever_diagnosis)))
+        else 
+		(if (eq ?fever b) then (assert (fever_diagnosis)))
+        else 
+		(if (eq ?fever c) then (assert (infection_diagnosis)))
+						 (retract ?ml))
 
 ;=============================================================
 	
 (defrule fever_diagnosis
 	(ask_fever)
-	(fever yes)
 	=>
 	(assert(fever_diagnosis)))
 
 (defrule no_fever_diagnosis
 	(ask_fever)
-	(fever no)
 	=>
 	(assert(no_fever_diagnosis)))
 	
 (defrule infection_diagnosis
 	(ask_fever)
-	(infection yes)
 	=>
 	(assert(infection_diagnosis)))
 	
