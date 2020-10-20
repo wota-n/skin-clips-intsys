@@ -388,7 +388,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "Wash the affected area with soap and water. Apply a cold compress (such as a flannel or cloth cooled with cold water) or an ice pack to any swelling for at least 10 minutes. Raise or elevate the affected area if possible, as this can help reduce swelling." crlf))
 	(printout t crlf))
@@ -407,7 +407,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
 	(printout t crlf))
 
 (defrule no_result_2
@@ -420,7 +420,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
 	(printout t crlf))
 
 (defrule no_result_3
@@ -433,7 +433,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
 	(printout t crlf))
 
 (defrule no_result_4
@@ -446,7 +446,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
 	(printout t crlf))
 
 (defrule no_result_5
