@@ -1,4 +1,8 @@
+(deffacts init (start))
+
 (defrule ask_fever
+	(start)
+	?ml <- (start)
 	=>
 	(printout t crlf "Are you fever? (yes|no)" crlf)
 	(bind ?fever (read))
@@ -10,7 +14,8 @@
 		(if(eq ?infection yes)
 		then(assert(infection_diagnosis))
 	else
-		(assert(no_fever_diagnosis))))))
+		(assert(no_fever_diagnosis)))))
+		(retract ?ml))
 
 ;=============================================================
 	
@@ -112,22 +117,28 @@
 	(no_fever_diagnosis)
 	(skin_eruption yes)
 	=>
-	(printout t crlf "Diagnosed as Acne" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Acne" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 
 (defrule ichthyosis
 	(no_fever_diagnosis)
 	(fish_scale yes)
 	=>
-	(printout t crlf "Diagnosed as Ichthyosis" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Ichthyosis" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 	
 (defrule meningitis
 	(fever_diagnosis)
 	(stiff_neck yes)
 	=>
-	(printout t crlf "Diagnosed as Meningitis" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Meningitis" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 	
 (defrule sore_throat
 	(fever_diagnosis)
@@ -164,8 +175,10 @@
 	(infection_diagnosis)
 	(black_spot yes)
 	=>
-	(printout t crlf "Diagnosed as Wartz" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Wartz" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 
 ;====LEVEL 3/Result=================================================	
 	
@@ -174,52 +187,67 @@
 	(red_patches yes)
 	(pain_touch yes)
 	=>
-	(printout t crlf "Diagnosed as Hives" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Hives" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 
 (defrule psoriasis
 	(no_fever_diagnosis)
 	(red_patches yes)
 	(white_silvery yes)
 	=>
-	(printout t crlf "Diagnosed as Psoriasis" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Psoriasis" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 
 (defrule eczema
 	(no_fever_diagnosis)
 	(red_patches yes)
 	(small_blister yes)
 	=>
-	(printout t crlf "Diagnosed as Hives" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Hives" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 	
 (defrule measles
 	(fever_diagnosis)
 	(sore_throat yes)
 	=>
-	(printout t crlf "Diagnosed as Measles" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Measles" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 
 (defrule scarlet_fever
 	(fever_diagnosis)
 	(sudden_sore yes)
 	=>
-	(printout t crlf "Diagnosed as Scarlet Fever" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Scarlet Fever" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 
 (defrule cold_sore
 	(fever_diagnosis)
 	(blister_mouth yes)
 	=>
-	(printout t crlf "Diagnosed as Cold Sore" crlf)
-	(halt))
+	(printout t crlf "Diagnosed as Cold Sore" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
 	
 (defrule insect_bites
 	(infection_diagnosis)
 	(red_spot_itchy yes)
 	=>
-	(printout t crlf "Diagnosed as Insect Bites" crlf)
-    (halt))
+	(printout t crlf "Diagnosed as Insect Bites" crlf
+	"Enter any key then press Enter to continue"crlf)
+	(bind ?response (read))
+	(assert(start)))
+
 
 	
 	
