@@ -130,11 +130,14 @@
 	(printout t crlf "Diagnosed as Acne" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Nonprescription acne treatments may include salicylic acid, benzoyl peroxide, sulfur, alpha hydroxy acids, adapalene, or tea tree oil, all of which are available in nonprescription strengths. A combination of these treatments may be more effective than using one single product alone" crlf))
 	(printout t crlf))
 
 (defrule ichthyosis
@@ -144,11 +147,14 @@
 	(printout t crlf "Diagnosed as Ichthyosis" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Ichthyosis can't be cured, but treatments can relieve the scaling and make you feel more comfortable." crlf))
 	(printout t crlf))
 	
 (defrule meningitis
@@ -158,11 +164,14 @@
 	(printout t crlf "Diagnosed as Meningitis" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "People with suspected meningitis will usually have tests in hospital to confirm the diagnosis and check whether the condition is the result of a viral or bacterial infection." crlf))
 	(printout t crlf))
 	
 (defrule sore_throat
@@ -203,11 +212,14 @@
 	(printout t crlf "Diagnosed as Wartz" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Most common warts go away without treatment, though it may take a year or two and new ones may develop nearby. It can be treated with different methods like salicylic acid, cryotherapy, other acids, minor surgery, and laser treatment" crlf))
 	(printout t crlf))
 
 ;====LEVEL 3/Result=================================================	
@@ -220,11 +232,14 @@
 	(printout t crlf "Diagnosed as Hives" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Best treatment for hives and angiodema is to identify and remove the trigger, but this is not an easy task. Antihistamines are usually prescribed by your doctor to provide relief from symptoms. Antihistamines work best if taken on a regular schedule to prevent hives from forming in the first place." crlf))
 	(printout t crlf))
 
 (defrule psoriasis
@@ -235,11 +250,14 @@
 	(printout t crlf "Diagnosed as Psoriasis" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Try an over-the-counter product first to moisturize your skin. Body lotion can help keep your skin from getting too dry and cracking. It can remove some of the scales or rough patches. Bathing in Epsom salts, Dead Sea salts, bath oil, or oatmeal can relieve symptoms as well." crlf))
 	(printout t crlf))
 
 (defrule eczema
@@ -250,11 +268,14 @@
 	(printout t crlf "Diagnosed as Eczema" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "There is currently no cure for eczema. Treatment for the condition aims to heal the affected skin and prevent flares of symptoms. Treatment plan is based on an individual’s age, symptoms, and current state of health." crlf))
 	(printout t crlf))
 	
 (defrule measles
@@ -264,11 +285,14 @@
 	(printout t crlf "Diagnosed as Measles" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 0) then (assert(quits))) 
+                else
+                (if(= ?response 3) then (printout t crlf "Stay home from work or school and other public places until you aren't contagious. This is four days after you first develop the measles rash. Avoid contact with people who may be vulnerable to infection, such as infants too young to be vaccinated and immunocompromised people." crlf))
 	(printout t crlf))
 
 (defrule scarlet_fever
@@ -278,11 +302,14 @@
 	(printout t crlf "Diagnosed as Scarlet Fever" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "It can easily be treated with antibiotics. Liquid antibiotics, such as penicillin or amoxicillin, are often used to treat children. These must be taken for 10 days, even though most people recover after four to five days." crlf))
 	(printout t crlf))
 
 (defrule cold_sore
@@ -292,11 +319,14 @@
 	(printout t crlf "Diagnosed as Cold Sore" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Use antiviral creams as soon as you recognise the early tingling feeling. They do not always work after blisters appear." crlf))
 	(printout t crlf))
 	
 (defrule insect_bites
@@ -306,9 +336,12 @@
 	(printout t crlf "Diagnosed as Insect Bites" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
+        "3. Medical advice "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
 		(if(= ?response 0) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Wash the affected area with soap and water. Apply a cold compress (such as a flannel or cloth cooled with cold water) or an ice pack to any swelling for at least 10 minutes. Raise or elevate the affected area if possible, as this can help reduce swelling." crlf))
 	(printout t crlf))
