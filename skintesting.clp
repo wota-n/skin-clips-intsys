@@ -135,7 +135,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "Nonprescription acne treatments may include salicylic acid, benzoyl peroxide, sulfur, alpha hydroxy acids, adapalene, or tea tree oil, all of which are available in nonprescription strengths. A combination of these treatments may be more effective than using one single product alone" crlf))
 	(printout t crlf))
@@ -152,7 +152,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "Ichthyosis can't be cured, but treatments can relieve the scaling and make you feel more comfortable." crlf))
 	(printout t crlf))
@@ -169,7 +169,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "People with suspected meningitis will usually have tests in hospital to confirm the diagnosis and check whether the condition is the result of a viral or bacterial infection." crlf))
 	(printout t crlf))
@@ -178,16 +178,8 @@
 	(fever_diagnosis)
 	(cold_cough yes)
 	=>
-	(printout t crlf "Do you have sore throat and sneezing? (yes|no)" crlf)
+	(printout t crlf "Do you have sore throat? (yes|no)" crlf)
 	(assert (sore_throat (read))))
-
-(defrule sudden_sore
-	(fever_diagnosis)
-	(cold_cough yes)
-        (sore_throat no)
-	=>
-	(printout t crlf "Is your sore throat sudden? (yes|no)" crlf)
-	(assert (sudden_sore (read))))
 
 (defrule blister_mouth
 	(fever_diagnosis)
@@ -217,7 +209,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "Most common warts go away without treatment, though it may take a year or two and new ones may develop nearby. It can be treated with different methods like salicylic acid, cryotherapy, other acids, minor surgery, and laser treatment" crlf))
 	(printout t crlf))
@@ -237,10 +229,10 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "Best treatment for hives and angiodema is to identify and remove the trigger, but this is not an easy task. Antihistamines are usually prescribed by your doctor to provide relief from symptoms. Antihistamines work best if taken on a regular schedule to prevent hives from forming in the first place." crlf))
-	(printout t crlf))
+	  (printout t crlf))
 
 (defrule psoriasis
 	(no_fever_diagnosis)
@@ -255,9 +247,9 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
-                else
-                (if(= ?response 3) then (printout t crlf "Try an over-the-counter product first to moisturize your skin. Body lotion can help keep your skin from getting too dry and cracking. It can remove some of the scales or rough patches. Bathing in Epsom salts, Dead Sea salts, bath oil, or oatmeal can relieve symptoms as well." crlf))
+		(if(= ?response 2) then (assert(quits)))
+         else
+        (if(= ?response 3) then (printout t crlf "Try an over-the-counter product first to moisturize your skin. Body lotion can help keep your skin from getting too dry and cracking. It can remove some of the scales or rough patches. Bathing in Epsom salts, Dead Sea salts, bath oil, or oatmeal can relieve symptoms as well." crlf))
 	(printout t crlf))
 
 (defrule eczema
@@ -273,44 +265,25 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "There is currently no cure for eczema. Treatment for the condition aims to heal the affected skin and prevent flares of symptoms. Treatment plan is based on an individual’s age, symptoms, and current state of health." crlf))
 	(printout t crlf))
 	
-(defrule measles
+(defrule red_eyes
 	(fever_diagnosis)
 	(sore_throat yes)
 	=>
-	(printout t crlf "Diagnosed as Measles" crlf
-	"1. Restart the program "crlf
-	"2. Quit the program "crlf
-        "3. Medical advice "crlf
-	"Choice: ")
-	(bind ?response (read))
-		(if(= ?response 1) then (assert(start)))
-		else
-		(if(= ?response 0) then (assert(quits))) 
-                else
-                (if(= ?response 3) then (printout t crlf "Stay home from work or school and other public places until you aren't contagious. This is four days after you first develop the measles rash. Avoid contact with people who may be vulnerable to infection, such as infants too young to be vaccinated and immunocompromised people." crlf))
-	(printout t crlf))
+	(printout t crlf "Do you have red eyes and runny nose? (yes|no)" crlf)
+	(assert(red_eyes(read))))
+	
 
-(defrule scarlet_fever
+(defrule swollen_tossil
 	(fever_diagnosis)
-	(sudden_sore yes)
+	(sore_throat yes)
 	=>
-	(printout t crlf "Diagnosed as Scarlet Fever" crlf
-	"1. Restart the program "crlf
-	"2. Quit the program "crlf
-        "3. Medical advice "crlf
-	"Choice: ")
-	(bind ?response (read))
-		(if(= ?response 1) then (assert(start)))
-		else
-		(if(= ?response 0) then (assert(quits)))
-                else
-                (if(= ?response 3) then (printout t crlf "It can easily be treated with antibiotics. Liquid antibiotics, such as penicillin or amoxicillin, are often used to treat children. These must be taken for 10 days, even though most people recover after four to five days." crlf))
-	(printout t crlf))
+	(printout t crlf "Do you have swollen tossil and flushed face? (yes|no)" crlf)
+	(assert(swollen_tossil(read))))
 
 (defrule cold_sore
 	(fever_diagnosis)
@@ -324,7 +297,7 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
                 else
                 (if(= ?response 3) then (printout t crlf "Use antiviral creams as soon as you recognise the early tingling feeling. They do not always work after blisters appear." crlf))
 	(printout t crlf))
@@ -334,6 +307,80 @@
 	(red_spot_itchy yes)
 	=>
 	(printout t crlf "Diagnosed as Insect Bites" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+        "3. Medical advice "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Wash the affected area with soap and water. Apply a cold compress (such as a flannel or cloth cooled with cold water) or an ice pack to any swelling for at least 10 minutes. Raise or elevate the affected area if possible, as this can help reduce swelling." crlf))
+	(printout t crlf))
+	
+;====LEVEL 4===================================================
+
+(defrule measles
+	(fever_diagnosis)
+	(sore_throat yes)
+	(red_eyes yes)
+	=>
+	(printout t crlf "Diagnosed as Measles" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+        "3. Medical advice "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits))) 
+                else
+                (if(= ?response 3) then (printout t crlf "Stay home from work or school and other public places until you aren't contagious. This is four days after you first develop the measles rash. Avoid contact with people who may be vulnerable to infection, such as infants too young to be vaccinated and immunocompromised people." crlf))
+	(printout t crlf))
+	
+(defrule scarlet_fever
+	(fever_diagnosis)
+	(sore_throat yes)
+	(swollen_tossil yes)
+	=>
+	(printout t crlf "Diagnosed as Scarlet Fever" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+        "3. Medical advice "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "It can easily be treated with antibiotics. Liquid antibiotics, such as penicillin or amoxicillin, are often used to treat children. These must be taken for 10 days, even though most people recover after four to five days." crlf))
+	(printout t crlf))
+
+;====No Result=================================================
+
+(defrule no_result_1
+	(pain_touch no)
+	(white_silvery no)
+	(small_blister no)
+	=>
+	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+        "3. Medical advice "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits)))
+                else
+                (if(= ?response 3) then (printout t crlf "Use antiviral creams as soon as you recognise the early tingling feeling. They do not always work after blisters appear." crlf))
+	(printout t crlf))
+
+(defrule no_result_2
+	(fish_scale no)
+	=>
+	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
         "3. Medical advice "crlf
@@ -412,5 +459,57 @@
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
 		else
-		(if(= ?response 0) then (assert(quits)))
+		(if(= ?response 2) then (assert(quits)))
+	(printout t crlf))
+
+(defrule no_result_3
+	(cold_cough no)
+	=>
+	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits)))
+	(printout t crlf))
+
+(defrule no_result_4
+	(black_spot no)
+	=>
+	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits)))
+	(printout t crlf))
+
+(defrule no_result_5
+	(red_spot_itchy no)
+	=>
+	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits)))
+	(printout t crlf))
+	
+(defrule no_result_6
+	(swollen_tossil no)
+	=>
+	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
+	(bind ?response (read))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 2) then (assert(quits)))
 	(printout t crlf))
