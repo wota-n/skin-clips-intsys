@@ -1,3 +1,4 @@
+;====Start===============================================
 (deffacts init (start))
 
 (defrule ask_fever
@@ -8,6 +9,7 @@
            "a. Skin rashes without fever" crlf
            "b. Skin rashes with fever" crlf
            "c. Skin infections " crlf 
+		   "d. Quit the program" crlf
 		   "Enter the choice then hit Enter" crlf
 		   "Choice: ")
         (bind ?fever (read))
@@ -16,9 +18,19 @@
 		(if (eq ?fever b) then (assert (fever_diagnosis)))
         else 
 		(if (eq ?fever c) then (assert (infection_diagnosis)))
-						 (retract ?ml))
+		else
+		(if (eq ?fever d) then (assert (quits)))
+		(retract ?ml))
+						 
+;====Quit===================================================
+						 
+(defrule quits
+	(type quit)
+	=>
+		(printout t "You quit the program." crlf)
+		(halt))
 
-;=============================================================
+;====Diagnosis Type==========================================
 	
 (defrule fever_diagnosis
 	(ask_fever)
@@ -116,27 +128,42 @@
 	(skin_eruption yes)
 	=>
 	(printout t crlf "Diagnosed as Acne" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 
 (defrule ichthyosis
 	(no_fever_diagnosis)
 	(fish_scale yes)
 	=>
 	(printout t crlf "Diagnosed as Ichthyosis" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 	
 (defrule meningitis
 	(fever_diagnosis)
 	(stiff_neck yes)
 	=>
 	(printout t crlf "Diagnosed as Meningitis" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 	
 (defrule sore_throat
 	(fever_diagnosis)
@@ -174,9 +201,14 @@
 	(black_spot yes)
 	=>
 	(printout t crlf "Diagnosed as Wartz" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 
 ;====LEVEL 3/Result=================================================	
 	
@@ -186,9 +218,14 @@
 	(pain_touch yes)
 	=>
 	(printout t crlf "Diagnosed as Hives" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 
 (defrule psoriasis
 	(no_fever_diagnosis)
@@ -196,56 +233,82 @@
 	(white_silvery yes)
 	=>
 	(printout t crlf "Diagnosed as Psoriasis" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 
 (defrule eczema
 	(no_fever_diagnosis)
 	(red_patches yes)
 	(small_blister yes)
 	=>
-	(printout t crlf "Diagnosed as Hives" crlf
-	"Enter any key then press Enter to continue"crlf)
+	(printout t crlf "Diagnosed as Eczema" crlf
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 	
 (defrule measles
 	(fever_diagnosis)
 	(sore_throat yes)
 	=>
 	(printout t crlf "Diagnosed as Measles" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 
 (defrule scarlet_fever
 	(fever_diagnosis)
 	(sudden_sore yes)
 	=>
 	(printout t crlf "Diagnosed as Scarlet Fever" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 
 (defrule cold_sore
 	(fever_diagnosis)
 	(blister_mouth yes)
 	=>
 	(printout t crlf "Diagnosed as Cold Sore" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
 	
 (defrule insect_bites
 	(infection_diagnosis)
 	(red_spot_itchy yes)
 	=>
 	(printout t crlf "Diagnosed as Insect Bites" crlf
-	"Enter any key then press Enter to continue"crlf)
+	"1. Restart the program "crlf
+	"2. Quit the program "crlf
+	"Choice: ")
 	(bind ?response (read))
-	(assert(start)))
-
-
-	
-	
+		(if(= ?response 1) then (assert(start)))
+		else
+		(if(= ?response 0) then (assert(quits)))
+	(printout t crlf))
