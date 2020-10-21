@@ -461,45 +461,6 @@
 		else
 		(if(= ?response 2) then (assert(quits)))
 	(printout t crlf))
-
-(defrule no_result_3
-	(cold_cough no)
-	=>
-	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
-	"1. Restart the program "crlf
-	"2. Quit the program "crlf
-	"Choice: ")
-	(bind ?response (read))
-		(if(= ?response 1) then (assert(start)))
-		else
-		(if(= ?response 2) then (assert(quits)))
-	(printout t crlf))
-
-(defrule no_result_4
-	(black_spot no)
-	=>
-	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
-	"1. Restart the program "crlf
-	"2. Quit the program "crlf
-	"Choice: ")
-	(bind ?response (read))
-		(if(= ?response 1) then (assert(start)))
-		else
-		(if(= ?response 2) then (assert(quits)))
-	(printout t crlf))
-
-(defrule no_result_5
-	(red_spot_itchy no)
-	=>
-	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
-	"1. Restart the program "crlf
-	"2. Quit the program "crlf
-	"Choice: ")
-	(bind ?response (read))
-		(if(= ?response 1) then (assert(start)))
-		else
-		(if(= ?response 2) then (assert(quits)))
-	(printout t crlf))
 	
 (defrule no_result_6
 	(swollen_tossil no)
