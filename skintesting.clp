@@ -367,42 +367,6 @@
 	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
 	"1. Restart the program "crlf
 	"2. Quit the program "crlf
-        "3. Medical advice "crlf
-	"Choice: ")
-	(bind ?response (read))
-		(if(= ?response 1) then (assert(start)))
-		else
-		(if(= ?response 2) then (assert(quits)))
-                else
-                (if(= ?response 3) then (printout t crlf "Use antiviral creams as soon as you recognise the early tingling feeling. They do not always work after blisters appear." crlf))
-	(printout t crlf))
-
-(defrule no_result_2
-	(fish_scale no)
-	=>
-	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
-	"1. Restart the program "crlf
-	"2. Quit the program "crlf
-        "3. Medical advice "crlf
-	"Choice: ")
-	(bind ?response (read))
-		(if(= ?response 1) then (assert(start)))
-		else
-		(if(= ?response 2) then (assert(quits)))
-                else
-                (if(= ?response 3) then (printout t crlf "Wash the affected area with soap and water. Apply a cold compress (such as a flannel or cloth cooled with cold water) or an ice pack to any swelling for at least 10 minutes. Raise or elevate the affected area if possible, as this can help reduce swelling." crlf))
-	(printout t crlf))
-
-;====No Result=================================================
-
-(defrule no_result_1
-	(pain_touch no)
-	(white_silvery no)
-	(small_blister no)
-	=>
-	(printout t crlf "Condition is not in knowledge base, please seek further help from experts" crlf
-	"1. Restart the program "crlf
-	"2. Quit the program "crlf
 	"Choice: ")
 	(bind ?response (read))
 		(if(= ?response 1) then (assert(start)))
